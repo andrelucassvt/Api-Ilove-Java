@@ -11,7 +11,7 @@ public class MunicipioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
     @NotBlank
     @Size(max = 60)

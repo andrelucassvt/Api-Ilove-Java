@@ -2,6 +2,7 @@ package com.api_ilove.Domain.Service;
 
 import com.api_ilove.Domain.Model.MunicipioModel;
 import com.api_ilove.Domain.Model.PontosTuristicosModel;
+import com.api_ilove.Domain.Repository.MunicipioRepo;
 import com.api_ilove.Domain.Repository.PontosTuristicosRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,9 @@ public class PontosTuristicosService {
     @Autowired
     private PontosTuristicosRepo pontosTuristicosRepo;
 
+    @Autowired
+    private MunicipioRepo municipioRepo;
+
     public List<PontosTuristicosModel> ListarPontosTuristicos(){
         return pontosTuristicosRepo.findAll();
     }
@@ -34,6 +38,10 @@ public class PontosTuristicosService {
     }
 
     public PontosTuristicosModel criar(PontosTuristicosModel pontosTuristicosModel){
+        MunicipioModel municipioModel =
+                municipioRepo.findById(pontosTuristicosModel.getMunicipioModel().getId())
+                .orElseThrow();
+        pontosTuristicosModel.setMunicipioModel(municipioModel);
         return pontosTuristicosRepo.save(pontosTuristicosModel);
     }
 

@@ -25,8 +25,6 @@ public class PontosTuristicosModel {
     @NotBlank
     private String longitude;
     @NotBlank
-    private String estrelas;
-    @NotBlank
     private String descricao;
 
 
@@ -68,14 +66,6 @@ public class PontosTuristicosModel {
 
     public void setMunicipioModel(MunicipioModel municipioModel) {
         this.municipioModel = municipioModel;
-    }
-
-    public String getEstrelas() {
-        return estrelas;
-    }
-
-    public void setEstrelas(String estrelas) {
-        this.estrelas = estrelas;
     }
 
     public String getDescricao() {
